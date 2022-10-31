@@ -39,7 +39,12 @@ function writePassword() {
      // setTimeout(() => {}, 5000);
      console.log(`write to page function: ${document.querySelector('#password').value}`)
   }
-  
+  //All character strings to put into arrays-----------------
+var availableUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var availableLowercase = 'abcdefghijklmnopqrstuvwxyz';
+var availableNumbers = '0123456789';
+var availableSpecial = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
