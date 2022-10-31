@@ -27,5 +27,19 @@ function writePassword() {
       writeToPage(password)
     }
   }
+
+
+
+
+  function writeToPage(password) {
+    var passwordText = document.querySelector("#password").textContent = password;
+      console.log(`password: ", ${password}`)
+      console.log(`passwordText: ", ${passwordText}`)
+      console.log(`passwordText.value: ", ${passwordText.value}`)
+     // setTimeout(() => {}, 5000);
+     console.log(`write to page function: ${document.querySelector('#password').value}`)
+  }
+  
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
