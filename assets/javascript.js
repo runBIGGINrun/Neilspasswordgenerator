@@ -28,18 +28,18 @@ function writePassword() {
     }
   }
 
+}
 
 
-
-  function writeToPage(password) {
-    var passwordText = document.querySelector("#password").textContent = password;
-      console.log(`password: ", ${password}`)
-      console.log(`passwordText: ", ${passwordText}`)
-      console.log(`passwordText.value: ", ${passwordText.value}`)
-     // setTimeout(() => {}, 5000);
-     console.log(`write to page function: ${document.querySelector('#password').value}`)
-  }
-  //All character strings to put into arrays-----------------
+function writeToPage(password) {
+  var passwordText = document.querySelector("#password").textContent = password;
+  console.log(`password: ", ${password}`)
+  console.log(`passwordText: ", ${passwordText}`)
+  console.log(`passwordText.value: ", ${passwordText.value}`)
+  // setTimeout(() => {}, 5000);
+  console.log(`write to page function: ${document.querySelector('#password').value}`)
+}
+//All character strings to put into arrays-----------------
 var availableUppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 var availableLowercase = 'abcdefghijklmnopqrstuvwxyz';
 var availableNumbers = '0123456789';
@@ -78,5 +78,47 @@ function validatePrompt() {
   return passwordLength
 }
 
+// Logic to generate password
+function generatePassword(passwordLength) {
+  var finalPass = "";
+  var contString = "";
+  var tryAgain = "Please try again!";
+
+  //First length check for password
+  if (confirm('Do you want uppercase characters?')) {
+    contString = contString.concat(availableUppercase)
+  }
+  if (confirm('Do you want lowercase characters?')) {
+    contString = contString.concat(availableLowercase)
+  }
+  if (confirm('Do you want to use numeric characters?')) {
+    contString = contString.concat(availableNumbers)
+  }
+  if (confirm('Do you want to use special characters?')) {
+    contString = contString.concat(availableSpecial)
+  }
+  if (contString === "") {
+    alert('Please select at least one character type.')
+    return tryAgain
+  }
+
+  var partPass = "";
+  console.log(passwordLength)
+  var finalArray = contString.split('');
+  console.log(finalArray)
+
+  for (let i = 0; i < passwordLength; i++) {
+    var random = Math.floor(Math.random() * finalArray.length);
+    partPass = finalArray[random];
+    finalPass += partPass
+  }
+
+  console.log("This is the generated password " + finalPass)
+  password = finalPass
+  return finalPass
+}
+
+
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", writePassword)
