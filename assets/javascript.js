@@ -46,5 +46,37 @@ var availableNumbers = '0123456789';
 var availableSpecial = '!"#$%&()*+,-./:;<=>?@[\]^_`{|}~';
 
 
+function validatePrompt() {
+  var passwordLength = prompt('What length of password would you like? \nPlease enter a number from 8-128');
+
+
+  if (passwordLength === "" || passwordLength > 128 || passwordLength < 8 || passwordLength === null || (isNaN(passwordLength))) {
+    if (passwordLength === null) {
+      console.log(`Failed`)
+      return null
+    }
+    else if (passwordLength === "") {
+      alert('Please enter a password length')
+      console.log(`Failed`)
+      return undefined
+    } else if (passwordLength > 128) {
+      alert('Selected password length is too long. Please choose a shorter password.')
+      console.log(`Failed`)
+      return undefined
+    } else if (passwordLength < 8) {
+      alert('Selected password length is too short. Please choose a longer password.');
+      console.log(`Failed`)
+      return undefined
+    } else if (isNaN(passwordLength)) {
+      alert('Please enter a number only');
+      console.log(`Failed`)
+      return undefined
+    }
+    console.log(`end of validate ${passwordLength}`)
+  }
+
+  return passwordLength
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
